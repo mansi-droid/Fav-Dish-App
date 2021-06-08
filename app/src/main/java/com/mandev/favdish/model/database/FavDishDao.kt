@@ -69,4 +69,8 @@ interface FavDishDao {
      */
     @Query("SELECT * FROM FAV_DISHES_TABLE WHERE type = :filterType")
     fun getFilteredDishesList(filterType: String): Flow<List<FavDish>>
+
+
+    @Query("SELECT * FROM FAV_DISHES_TABLE ORDER BY ID")
+    fun getDishesList(): Flow<List<FavDish>>
 }

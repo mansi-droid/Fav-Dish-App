@@ -54,6 +54,9 @@ import java.io.IOException
 import java.io.OutputStream
 import java.util.*
 
+/**
+ * A screen where we can add and update the dishes.
+ */
 class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var mBinding: ActivityAddUpdateDishBinding

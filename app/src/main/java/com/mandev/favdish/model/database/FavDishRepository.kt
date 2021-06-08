@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.Flow
  *
  * @param favDishDao - Pass the FavDishDao as the parameter.
  */
-
 class FavDishRepository(private val favDishDao: FavDishDao) {
 
     /**
@@ -49,4 +48,8 @@ class FavDishRepository(private val favDishDao: FavDishDao) {
      */
     fun filteredListDishes(value: String): Flow<List<FavDish>> =
         favDishDao.getFilteredDishesList(value)
+
+
+    @WorkerThread
+    suspend fun dishesList(): Flow<List<FavDish>> = favDishDao.getDishesList()
 }

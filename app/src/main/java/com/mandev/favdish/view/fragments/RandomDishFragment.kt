@@ -31,11 +31,8 @@ class RandomDishFragment : Fragment() {
 
     private lateinit var mRandomDishViewModel: RandomDishViewModel
 
-    // TODO Step 3: Create a global variable for Progress Dialog
-    // START
     // A global variable for Progress Dialog
     private var mProgressDialog: Dialog? = null
-    // END
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -103,15 +100,12 @@ class RandomDishFragment : Fragment() {
             loadRandomDish?.let {
                 Log.i("Random Dish Loading", "$loadRandomDish")
 
-                // TODO Step 6: Show the progress dialog if the SwipeRefreshLayout is not visible and hide when the usage is completed.
-                // START
                 // Show the progress dialog if the SwipeRefreshLayout is not visible and hide when the usage is completed.
                 if (loadRandomDish && !mBinding!!.srlRandomDish.isRefreshing) {
                     showCustomProgressDialog() // Used to show the progress dialog
                 } else {
                     hideProgressDialog()
                 }
-                // END
             }
         })
     }
@@ -230,8 +224,6 @@ class RandomDishFragment : Fragment() {
         mBinding = null
     }
 
-    // TODO Step 4: Create a function to show the Custom Progress Dialog.
-    // START
     /**
      * A function is used to show the Custom Progress Dialog.
      */
@@ -247,10 +239,7 @@ class RandomDishFragment : Fragment() {
             it.show()
         }
     }
-    // END
 
-    // TODO Step 5: Create a function to hide the custom progress dialog.
-    // START
     /**
      * This function is used to dismiss the progress dialog if it is visible to user.
      */
@@ -259,5 +248,4 @@ class RandomDishFragment : Fragment() {
             it.dismiss()
         }
     }
-    // END
 }

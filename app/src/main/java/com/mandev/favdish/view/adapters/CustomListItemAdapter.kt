@@ -40,13 +40,10 @@ class CustomListItemAdapter(
      * layout file.
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         val item = listItems[position]
-
         holder.tvText.text = item
 
         holder.itemView.setOnClickListener {
-
             if (activity is AddUpdateDishActivity) {
                 activity.selectedListItem(item, selection)
             }

@@ -3,8 +3,8 @@ package com.mandev.favdish.utils
 /**
  * This is used to define the constant values that we can use throughout the application.
  */
-object Constants {
 
+object Constants {
     const val DISH_TYPE: String = "DishType"
     const val DISH_CATEGORY: String = "DishCategory"
     const val DISH_COOKING_TIME: String = "DishCookingTime"
@@ -22,7 +22,7 @@ object Constants {
     const val API_ENDPOINT: String = "recipes/random"
 
     // API KEY VALUE from the spoonacular console.
-    const val API_KEY_VALUE: String = "433b42674ee94a64ad420e101000eb79"
+    const val API_KEY_VALUE: String = "071abc3e9e7d4c7891b8c4c47f5e0e69"
 
     // KEY PARAMS
     const val API_KEY: String = "apiKey"
@@ -34,6 +34,10 @@ object Constants {
     const val LIMIT_LICENSE_VALUE: Boolean = true
     const val TAGS_VALUE: String = "vegetarian, dessert"
     const val NUMBER_VALUE: Int = 1
+
+    const val NOTIFICATION_ID = "FavDish_notification_id"
+    const val NOTIFICATION_NAME = "FavDish"
+    const val NOTIFICATION_CHANNEL = "FavDish_channel_01"
 
     /**
      * This function will return the Dish Type List items.

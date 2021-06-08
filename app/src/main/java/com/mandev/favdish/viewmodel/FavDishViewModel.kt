@@ -58,7 +58,8 @@ class FavDishViewModel(private val repository: FavDishRepository) : ViewModel() 
      *
      * @param value - dish type selection
      */
-    fun getFilteredList(value: String): LiveData<List<FavDish>> = repository.filteredListDishes(value).asLiveData()
+    fun getFilteredList(value: String): LiveData<List<FavDish>> =
+        repository.filteredListDishes(value).asLiveData()
 }
 
 /**

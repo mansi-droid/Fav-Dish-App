@@ -54,7 +54,6 @@ class FavDishAdapter(private val fragment: Fragment) :
 
         holder.tvTitle.text = dish.title
 
-
         holder.itemView.setOnClickListener {
             if (fragment is AllDishesFragment) {
                 fragment.dishDetails(dish)
@@ -62,6 +61,7 @@ class FavDishAdapter(private val fragment: Fragment) :
                 fragment.dishDetails(dish)
             }
         }
+
         if (fragment is AllDishesFragment) {
             holder.ibMore.visibility = View.VISIBLE
         } else if (fragment is FavoriteDishesFragment) {

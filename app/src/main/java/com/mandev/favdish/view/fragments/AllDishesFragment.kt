@@ -1,11 +1,11 @@
 package com.mandev.favdish.view.fragments
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -25,16 +25,22 @@ import com.mandev.favdish.viewmodel.FavDishViewModel
 import com.mandev.favdish.viewmodel.FavDishViewModelFactory
 
 class AllDishesFragment : Fragment() {
-    lateinit var mBinding: FragmentAllDishesBinding
 
-    // A global variable for  Class
+    private lateinit var mBinding: FragmentAllDishesBinding
+
+    /**
+     * To create the ViewModel we used the viewModels delegate, passing in an instance of our FavDishViewModelFactory.
+     * This is constructed based on the repository retrieved from the FavDishApplication.
+     */
+    private val mFavDishViewModel: FavDishViewModel by viewModels {
+        FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
+    }
+
+    // A global variable for FavDishAdapter Class
     private lateinit var mFavDishAdapter: FavDishAdapter
 
     // A global variable for Filter List Dialog
     private lateinit var mCustomListDialog: Dialog
-    private val mFavDishViewModel: FavDishViewModel by viewModels {
-        FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,14 +52,19 @@ class AllDishesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mBinding = FragmentAllDishesBinding.inflate(inflater, container, false)
+        mBinding =
+            FragmentAllDishesBinding.inflate(inflater, container, false)
         return mBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Set the LayoutManager that this RecyclerView will use.
         mBinding.rvDishesList.layoutManager = GridLayoutManager(requireActivity(), 2)
+        // Adapter class is initialized and list is passed in the param.
         mFavDishAdapter = FavDishAdapter(this@AllDishesFragment)
+        // adapter instance is set to the recyclerview to inflate the items.
         mBinding.rvDishesList.adapter = mFavDishAdapter
 
         /**
@@ -64,10 +75,13 @@ class AllDishesFragment : Fragment() {
             dishes.let {
 
                 if (it.isNotEmpty()) {
+
                     mBinding.rvDishesList.visibility = View.VISIBLE
                     mBinding.tvNoDishesAddedYet.visibility = View.GONE
+
                     mFavDishAdapter.dishesList(it)
                 } else {
+
                     mBinding.rvDishesList.visibility = View.GONE
                     mBinding.tvNoDishesAddedYet.visibility = View.VISIBLE
                 }
@@ -89,6 +103,7 @@ class AllDishesFragment : Fragment() {
      * @param favDish
      */
     fun dishDetails(favDish: FavDish) {
+
         if (requireActivity() is MainActivity) {
             (activity as MainActivity?)!!.hideBottomNavigationView()
         }
@@ -96,7 +111,6 @@ class AllDishesFragment : Fragment() {
         findNavController()
             .navigate(AllDishesFragmentDirections.actionAllDishesToDishDetails(favDish))
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_all_dishes, menu)
