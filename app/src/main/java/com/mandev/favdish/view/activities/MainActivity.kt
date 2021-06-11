@@ -98,8 +98,8 @@ class MainActivity : AppCompatActivity() {
      *
      * You can also set the TimeUnit as per your requirement. for example SECONDS, MINUTES, or HOURS.
      */
-    // setting period to 15 Minutes
-    private fun createWorkRequest() = PeriodicWorkRequestBuilder<NotifyWorker>(15, TimeUnit.MINUTES)
+    // setting period to 30 Minutes
+    private fun createWorkRequest() = PeriodicWorkRequestBuilder<NotifyWorker>(30, TimeUnit.MINUTES)
         .setConstraints(createConstraints())
         .build()
 

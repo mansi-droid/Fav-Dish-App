@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--TODO Step 1: Design the Dish Details layout.-->
-<!--START-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_dish_detail_main"
@@ -133,4 +131,3 @@
             tools:text="@string/lbl_estimate_cooking_time" />
     </RelativeLayout>
 </ScrollView>
-    <!--END-->

@@ -87,13 +87,9 @@ class NotifyWorker(context: Context, workerParams: WorkerParameters) :
                 // Setting this flag will make it so the notification is automatically canceled when the user clicks it in the panel.
 
         notification.priority = NotificationCompat.PRIORITY_MAX
-        // END
 
-        // TODO Step 16: Set channel ID for Notification if you are using the API level 26 or higher.
-        // START
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notification.setChannelId(Constants.NOTIFICATION_CHANNEL)
-
             // Setup the Ringtone for Notification.
             val ringtoneManager =
                 RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
@@ -115,17 +111,9 @@ class NotifyWorker(context: Context, workerParams: WorkerParameters) :
             channel.setSound(ringtoneManager, audioAttributes)
             notificationManager.createNotificationChannel(channel)
         }
-        // END
-
-        // TODO Step 17: Notify the user with Notification id and Notification builder using the NotificationManager instance that we have created.
-        // START
         notificationManager.notify(notification_id, notification.build())
-        // END
     }
-    // END
 
-    // TODO Step 9: Create a function that will convert the vector image to bitmap as below.
-    // START
     /**
      * A function that will convert the vector image to bitmap as below.
      */
@@ -140,5 +128,4 @@ class NotifyWorker(context: Context, workerParams: WorkerParameters) :
         drawable.draw(canvas)
         return bitmap
     }
-    // END
 }
